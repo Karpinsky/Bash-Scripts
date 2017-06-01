@@ -21,6 +21,9 @@ function ArrayContains {
 read user_input
 IFS=' ' read -r -a new_width_height <<< $user_input
 
+echo ${new_width_height[0]}
+echo ${new_width_height[1]}
+
 echo $'\n'"Images resized:"
 for file in *
 do
@@ -33,7 +36,7 @@ do
     new_file_name="$filename-${new_width_height[0]}-${new_width_height[1]}.$extention"
     echo $new_file_name
 
-    convert $fullfilename -resize ${new_width_height[0]}x${new_width_height[1]} $new_file_name
+    convert $fullfilename -resize ${new_width_height[0]}x${new_width_height[1]}\! $new_file_name
     # mv $fullfilename $new_file_name
   fi
 done
